@@ -106,9 +106,9 @@ async function fadeInKeating(){
           Oops! You re-elected Paul Keating!
         </div>
       </div>
-      <section class="field-row">
+      <div class="field-row">
         <button onclick="Reveal.prev();">Go Back</button>
-      </section>
+      </div>
     </div>
   </div>
 </div>
@@ -186,3 +186,52 @@ A simple framework for statistical audits.
 
 Sampling with replacement (Source - Windows 95)
 :::
+
+## The End
+
+```{=html}
+<div class="flex-container">
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        Shut Down Windows
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body" style="font-size: 20pt;">
+      <div class="window-error">
+        <div class="shutdown-icon"><img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-4.png"/>
+        </div>
+        <div class="shutdown-message">
+          Are you sure you want to:
+          <div class="field-row">
+            <input id="radio1" type="radio" name="fieldset-example2" checked>
+            <label for="radio1">Shut down the computer?</label>
+          </div>
+          <div class="field-row">
+            <input id="radio2" type="radio" name="fieldset-example2">
+            <label for="radio2">Restart the computer?</label>
+          </div>
+          <div class="field-row">
+            <input id="radio3" type="radio" name="fieldset-example2">
+            <label for="radio3">Restart the computer in MS-DOS mode?</label>
+          </div>
+          <div class="field-row">
+            <input id="radio4" type="radio" name="fieldset-example2">
+            <label for="radio4">Close all programs and log on as different user?</label>
+          </div>
+        </div>
+      </div>
+      <div class="field-row">
+        <button onclick="Reveal.next();">Yes</button>
+        <button onclick="Reveal.next();">No</button>
+        <button onclick="Reveal.next();">Help</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## {transition="fade-in" background-image="media/shut_down_safe.png"}

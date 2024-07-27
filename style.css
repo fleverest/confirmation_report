@@ -50,10 +50,32 @@
 .window-body .window-error .error-icon {
   margin: 0 15px 0 15px;
 }
+.window-body .window-error .shutdown-icon > img {
+  margin: 0 0 0 0;
+}
 .window-body .window-error .error-message {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.window-body .shutdown-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.window-body .shutdown-message .field-row {
+  display: flex;
+  flex-direction: row;
+  justify-self: left;
+  justify-content: left;
+}
+
+.window-body .shutdown-message .field-row > label {
+  min-width: 350px;
+  margin: 8px 0 8px 0;
+  font-size: 12pt;
 }
 
 .fig-keating {
