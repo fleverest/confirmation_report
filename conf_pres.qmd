@@ -1,0 +1,179 @@
+---
+title: "Risk-limiting Bayesian Ballot-polling Audits for Plurality"
+author: Floyd Everest
+organization: Econometrics and Business Statistics
+bibliography: references.bib
+format:
+  revealjs:
+    header-includes: |
+      <link rel="stylesheet" href="https://unpkg.com/98.css" />
+      <link href="style.css" rel="stylesheet">
+---
+
+## Warning: may contain
+
+* Fiction
+
+. . .
+
+* Nostalgia
+
+. . .
+
+* References you're too young for
+
+
+# Risk-limiting Bayesian Ballot-polling Audits for Plurality
+
+# Risk-limiting Bayesian Ballot-polling [Audits]{style="background-color:yellow;"} for Plurality
+
+# [Risk-limiting]{style="background-color:yellow;"} Bayesian Ballot-polling Audits for Plurality
+
+# Risk-limiting Bayesian [Ballot-polling]{style="background-color:yellow;"} Audits for Plurality
+
+# Risk-limiting Bayesian Ballot-polling Audits for [Plurality]{style="background-color:yellow;"}
+
+# Risk-limiting [Bayesian]{style="background-color:yellow;"} Ballot-polling Audits for Plurality
+
+# Post-election Audits
+
+## What?
+
+* After *the count*
+* *Reported outcome* is released
+* Take a look at an *audit-trail*
+
+## Why?
+
+* Make sure reported outcome is true
+  * Software bugs (e.g., scanners)
+  * Human error (e.g., malicious interference, tired eyes)
+
+. . . 
+
+```{=html}
+<div class="flex-container">
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        Reported outcome available!
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body" style="font-size: 20pt;">
+      <p>Accept at face value?</p>
+      <div class="field-row">
+        <button onclick="Reveal.next();">Yes</button>
+        <button onclick="for(let i=0; i<3; i++){Reveal.next();};">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## This is why.
+
+::: {#fig-98-popup-error}
+```{=html}
+<div class="flex-container">
+  <div class="window" style="margin: 32px; max-width: 50%;">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        Error
+      </div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body" style="font-size: 20pt;">
+      <div class="window-error">
+        <div class="error-icon"><img src="https://win98icons.alexmeub.com/icons/png/msg_warning-0.png"/>
+        </div>
+        <div class="error-message">
+          Oops! You re-elected Paul Keating!
+        </div>
+      </div>
+      <section class="field-row">
+        <button onclick="for(let i=0; i < 2; i++){Reveal.prev();};">Go Back</button>
+      </section>
+    </div>
+  </div>
+</div>
+```
+:::
+
+::: {#fig-keating .fragment .fade-in}
+![](media/paul_keating_happy.jpg){width=400}
+:::
+
+
+## How?
+
+If the audit-trail is reliable, we can just recount using these records.
+But:
+
+* Reliable audit-trails are often paper records
+  * original paper ballots
+  * voter-verifiable paper records
+* Manually checking paper records is expensive
+
+
+## Statistical audits
+
+If we can sample ballots *at random*, we can use statistics!
+
+* Goals:
+  * Detect incorrect reported outcome with high *probability*
+  * Use as few samples as possible
+
+## Hypothesis testing
+
+$$
+H_0: \text{"Reported outcome is false."}
+$$ versus
+$$
+H_1: \text{"Reported outcome is true."}
+$$
+
+* Take a relatively small sample
+* *Decide* between $H_0$ and $H_1$
+
+## Sequential hypothesis testing
+
+* Sample one-by-one (or in relatively small batches)
+* *Decide* between $H_0$, $H_1$, or continuing to sample
+
+
+## Risk-limiting audits (RLAs)
+
+Guaranteed to correct an incorrect outcome with α probability of at least 1-$\alpha$
+
+* Legal definition!!
+  * Not just detect, but also *correct* erroneous outcomes
+* But, for now:
+  * "Risk-limit" $\longleftrightarrow$ "Level" or "Significance"
+  * "Risk-limiting audit" $\longleftrightarrow$ "Level-$\alpha$ test"
+
+
+## Ballot-polling audits
+
+A simple framework for statistical audits.
+
+::: {#fig-windows-file-copy}
+![](media/file_copy.mp4){height="250" loop="true" autoplay="true"}
+
+Sampling without replacement (Source - Windows 95)
+:::
+
+
+## Ballot-polling audits
+
+A simple framework for statistical audits.
+
+::: {#fig-windows-file-copy-with-replacement}
+![](media/file_copy_with_replacement.mp4){height="250" loop="true" autoplay="true"}
+
+Sampling with replacement (Source - Windows 95)
+:::

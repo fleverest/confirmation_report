@@ -1,0 +1,130 @@
+---
+title: "Statistical Election Audits: Bayesian Tests, Optimal Intersection Tests and Tools for Practice"
+author:
+- name: Floyd Everest
+  email: floyd.everest@monash.edu
+organization: Econometrics and Business Statistics
+bibliography: references.bib
+format: report-pdf
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+if (!require(ganttrify)) {
+  devtools::install_github("giocomai/ganttrify")
+}
+library(tidyverse)
+library(ganttrify)
+```
+
+This document constitutes my confirmation report, required for my confirmation milestone.
+
+# Introduction
+
+## Statistical Election Audits
+
+Post-election audits are important procedures which aim to verify reported election outcomes, or to identify when there has been an error, thereby facilitating trust in democratic processes. Statistical election audits provide a means to conduct these audits without inspecting every single ballot, significantly reducing costs and allowing for broader adoption, however introducing some risk that the audit certifies when the reported outcome was false. Risk-limiting audits ensure that incorrect reported outcomes will be corrected with high confidence, and are already mandated in several U.S. jurisdictions.
+
+The current suite of risk-limiting audits used in practice incorporate sequential tests based on martingales, and hence they are typically geared to limit risk out-of-the-box.
+
+Bayesian audits, devised by @bayesian_audits, are effective statistical audits adaptable to a variety of contests. However, they are not risk-limiting by default. Despite their adaptability to contests that other methods cannot audit, such as multi-winner STV elections [@everest2023dirtree], they remain unused in practice.
+
+## Sequential Testing Tools
+
+There are numerous sequential testing applications in the wild [@sprtt_package;@stcpr6_package], yet they lack a unified standard in test specification and usage. Clearly, there is a gap in the existing toolkits for implementing sequential hypothesis tests in practice. I find myself unusually well-placed to fill this gap; I have a relatively strong technical background in both computing and hypothesis testing, I have the time and I'm self-funded (via my RTP scholarship).
+
+This project is also coherent with my thesis goals, since the contribution can be integrated back into SHANGRLA [@stark2020shangrla] for application to election auditing.
+
+## Portfolio Algorithms for Combining Sequential Tests
+
+Multiple test supermartingales can be combined via weighted averages, quantifying evidence for the intersection hypothesis test.
+
+@ek2023awaire exploit this to audit instant-runoff voting elections, which is the ranked-choice voting system we use in Australia. They explore some simple algorithms to determine weights which guide the audit to halt earlier. There is extensive literature on portfolio algorithms, which aim to maximise the value of diversified investment portfolios, that could be applied to combining test supermartingales.
+
+
+# First Year
+
+Of course, like all students, I spent a large portion of my first year focused on coursework, and I'm content with my results. BEX6500 was more difficult for me, given my unfamiliarity with econometric theory and application. BEX6510 was remeniscent of my early training in pure mathematics during my undergraduate studies.
+
+Much of my research in the first year of enrolment has been focused on Bayesian audits. The first contribution to this literature from my PhD is included in the working paper attached to this confirmation report. This work presents a method for defining Bayesian sequential tests for plurality contests that limit risk (under clinical conditions).
+
+I have also spent some time developing software for implementing sequential tests in python. After attending the 2024 NUMBATS hackathon I identified a gap in the existing tools for sequential hypothesis testing. You can find some documentation which I have started writing [here](https://fleverest.github.io/testsmart/).
+
+@fig-first-year shows the progress I've made in my first year of enrolment in the EBS PhD program.
+
+```{r}
+#| label: fig-first-year
+#| fig-cap: My first year of progress in the EBS PhD program.
+#| fig-width: 13
+#| fig-height: 5
+#| echo: FALSE
+
+first_year <- tribble(
+  ~wp, ~activity, ~start_date, ~end_date,
+  "Bayesian Audits for Plurality", "BEX6510: Introduction to Econometrics", 1, 5,
+  "Bayesian Audits for Plurality", "Brief review of literature on testing", 1, 3,
+  "Bayesian Audits for Plurality", "Develop conjecture for worst-case risk", 4, 6, 
+  "Bayesian Audits for Plurality", "Empirical analyis of risk", 5, 6,
+  "Bayesian Audits for Plurality", "Prove conjecture for worst-case risk", 7, 8, 
+  "Bayesian Audits for Plurality", "BEX6500: Statistical Inference", 8, 11,
+  "Bayesian Audits for Plurality", "Thorough review of sequential analyis literature", 9, 12,
+  "Bayesian Audits for Plurality", "Write up completed works for confirmation", 11, 12,
+  "Sequential Testing Software", "Review landscape of sequential testing tools", 12, 12,
+  "Sequential Testing Software", "Prototype testing library", 12, 12
+)
+
+ganttrify(
+  project=first_year,
+  project_start_date="2023-07",
+  size_text_relative=1.5
+)
+```
+
+
+# Moving Forward
+
+Following the completion of my work on Bayesian auditing, I plan to dedicate a portion of the second year developing tools for sequential testing. My goal is to produce a body of work which can be integrated back into existing election auditing frameworks. I plan to design these tools so that they are useful for other applications, both academic and industrial. Ideally, I will be able to submit this body of work to the Journal of Statistical Software (JSS).
+
+While I finalise my work, I plan to explore how we can apply portfolio algorithms to combine test supermartingales for intersection tests. I plan to start the extensive literature review for this project in my second year. I'm not too familiar with this area of study, so I suspect it will take a long time to break into this literature.
+
+```{r}
+#| label: fig-next-two-years
+#| fig-cap: My plan for the next two years of study.
+#| fig-width: 13
+#| fig-height: 5
+#| echo: FALSE
+
+plan <- tribble(
+  ~wp, ~activity, ~start_date, ~end_date,
+  "Bayesian Audits for Plurality", "Identify a target for publication", 1, 2,
+  "Bayesian Audits for Plurality", "Complete work and write a complete paper", 1, 2,
+  "Sequential Testing Software", "Develop package and include many tests", 1, 6,
+  "Sequential Testing Software", "Write detailed documentation", 1, 6,
+  "Sequential Testing Software", "Draft a paper geared toward JSS", 7, 12,
+  "Sequential Testing Software", "Finalise for publication", 13, 16,
+  "Portfolio Algorithms", "Extensive literature review", 6, 12,
+  "Portfolio Algorithms", "Explore for independent tests", 8, 14,
+  "Portfolio Algorithms", "Implement for AWAIRE", 14, 17,
+  "Portfolio Algorithms", "Draft a paper", 18, 20,
+  "Portfolio Algorithms", "Identify publication target", 18, 20,
+  "Portfolio Algorithms", "Finalise for publication", 21, 21,
+  "Completion", "Prepare thesis", 21, 24,
+  "Completion", "Cry (from happiness)", 24, 24
+)
+
+ganttrify(
+  project=plan,
+  project_start_date="2024-07",
+  size_text_relative=1.5
+)
+```
+
+
+@fig-next-two-years illustrates a timeline for my next two years of study.
+
+# Reflection
+
+I learned a lot in my first year of studies, and I'm satisfied with my progress so far.
+
+I will share an insight I've gained this year. You may notice that the timeline for my first year begins with a "brief review of literature." In hindsight, a more thorough review at the start would have saved me days of redesigning mathematical notation. The plan for my next two years reflects this realisation, but I'm sure there will be more lessons along these lines, each requiring further refinements of this timeline.
+
+I look forward to hearing your advice, feedback, and general impressions regarding my working paper, course progress, and future plans. Thank you for your time.

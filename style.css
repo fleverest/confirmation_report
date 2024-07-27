@@ -1,0 +1,57 @@
+.reveal .slide figure > figcaption {
+  font-size: 0.5em;
+  color: blue;
+  text-align: center;
+}
+
+.flex-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container .window {
+  min-width: 500px;
+  margin: 32px;
+  max-width: 50%
+}
+
+.window .title-bar {
+  font-size: 22px;
+}
+
+.window .title-bar-controls button {
+  min-height: 28px;
+  min-width: 32px;
+  background-size: 16px 14px;
+  background-position: top 6px left 7px;
+}
+
+.window .window-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.window .window-body .field-row {
+  display: flex !important;
+  margin: 0 10% 0 10%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.window .window-body .field-row > button {
+  margin: 0 10% 0 10%;
+}
+
+.window-body .window-error {
+  display: flex;
+  flex-direction: row;
+}
+.window-body .window-error .error-icon {
+  margin: 0 15px 0 15px;
+}
+.window-body .window-error .error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
