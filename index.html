@@ -408,6 +408,17 @@ Floyd Everest
 </ul></li>
 </ul>
 <div class="fragment">
+<script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function fadeInKeating(){
+  await sleep(5000);
+  document.getElementsByClassName('fig-keating').forEach(
+    (el) => {el.classList.toggle("fade-in");}
+  );
+}
+</script>
 <div class="flex-container">
   <div class="window">
     <div class="title-bar">
@@ -421,8 +432,8 @@ Floyd Everest
     <div class="window-body" style="font-size: 20pt;">
       <p>Accept at face value?</p>
       <div class="field-row">
-        <button onclick="Reveal.next();">Yes</button>
-        <button onclick="for(let i=0; i<3; i++){Reveal.next();};">No</button>
+        <button onclick="Reveal.next();fadeInKeating();">Yes</button>
+        <button onclick="for(let i=0; i<2; i++){Reveal.next();};">No</button>
       </div>
     </div>
   </div>
@@ -451,20 +462,18 @@ Floyd Everest
         </div>
       </div>
       <section class="field-row">
-        <button onclick="for(let i=0; i < 2; i++){Reveal.prev();};">Go Back</button>
+        <button onclick="Reveal.prev();">Go Back</button>
       </section>
     </div>
   </div>
 </div>
 </div>
-<div id="fig-keating" class="fragment fade-in">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center" width="400">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-keating quarto-figure quarto-figure-center" width="400">
 <figure class="quarto-float quarto-float-fig">
 <div>
-<img data-src="media/paul_keating_happy.jpg" id="fig-539a35d47e664c97a50115a146a7f1bd-1" width="400">
+<img data-src="media/paul_keating_happy.jpg" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-keating" width="400">
 </div>
 </figure>
-</div>
 </div>
 </section>
 <section id="how" class="slide level2">
@@ -527,7 +536,7 @@ H_1: \text{"Reported outcome is true."}
 <section id="ballot-polling-audits" class="slide level2">
 <h2>Ballot-polling audits</h2>
 <p>A simple framework for statistical audits.</p>
-<div id="fig-windows-file-copy" class="quarto-figure quarto-figure-center" autoplay="true" height="250" loop="true">
+<div id="fig-windows-file-copy" class="quarto-figure quarto-figure-center" height="250" loop="true" autoplay="true">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-windows-file-copy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <video data-src="media/file_copy.mp4" loop="true" autoplay="true" height="250" controls=""><a href="media/file_copy.mp4">Video</a></video>
@@ -541,7 +550,7 @@ Figure&nbsp;1: Sampling without replacement (Source - Windows 95)
 <section id="ballot-polling-audits-1" class="slide level2">
 <h2>Ballot-polling audits</h2>
 <p>A simple framework for statistical audits.</p>
-<div id="fig-windows-file-copy-with-replacement" class="quarto-figure quarto-figure-center" autoplay="true" height="250" loop="true">
+<div id="fig-windows-file-copy-with-replacement" class="quarto-figure quarto-figure-center" height="250" loop="true" autoplay="true">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-windows-file-copy-with-replacement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <video data-src="media/file_copy_with_replacement.mp4" loop="true" autoplay="true" height="250" controls=""><a href="media/file_copy_with_replacement.mp4">Video</a></video>

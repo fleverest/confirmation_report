@@ -52,6 +52,17 @@ format:
 . . . 
 
 ```{=html}
+<script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function fadeInKeating(){
+  await sleep(5000);
+  document.getElementsByClassName('fig-keating').forEach(
+    (el) => {el.classList.toggle("fade-in");}
+  );
+}
+</script>
 <div class="flex-container">
   <div class="window">
     <div class="title-bar">
@@ -65,8 +76,8 @@ format:
     <div class="window-body" style="font-size: 20pt;">
       <p>Accept at face value?</p>
       <div class="field-row">
-        <button onclick="Reveal.next();">Yes</button>
-        <button onclick="for(let i=0; i<3; i++){Reveal.next();};">No</button>
+        <button onclick="Reveal.next();fadeInKeating();">Yes</button>
+        <button onclick="for(let i=0; i<2; i++){Reveal.next();};">No</button>
       </div>
     </div>
   </div>
@@ -96,7 +107,7 @@ format:
         </div>
       </div>
       <section class="field-row">
-        <button onclick="for(let i=0; i < 2; i++){Reveal.prev();};">Go Back</button>
+        <button onclick="Reveal.prev();">Go Back</button>
       </section>
     </div>
   </div>
@@ -104,9 +115,7 @@ format:
 ```
 :::
 
-::: {#fig-keating .fragment .fade-in}
-![](media/paul_keating_happy.jpg){width=400}
-:::
+![](media/paul_keating_happy.jpg){.fig-keating width=400}
 
 
 ## How?
