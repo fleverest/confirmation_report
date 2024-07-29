@@ -29,72 +29,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
     }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
     }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="conf_pres_files/libs/revealjs/dist/theme/quarto.css">
   <link href="conf_pres_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="conf_pres_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -385,8 +340,6 @@
       margin-right: 0; 
     }
   </style>
-  <script type="module" src="conf_pres_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-  <link href="conf_pres_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/98.css">
   <link href="style.css" rel="stylesheet">
 </head>
@@ -460,9 +413,9 @@ Floyd Everest
 <section id="what" class="slide level2">
 <h2>What?</h2>
 <ul>
-<li>After <em>the count</em></li>
-<li><em>Reported outcome</em> is released</li>
-<li>Take a look at an <em>audit-trail</em></li>
+<li>After “the count”, a <em>reported outcome</em> is released</li>
+<li>With access to the <em>audit-trail</em></li>
+<li><em>Certify</em> as correct, or correct the outcome</li>
 </ul>
 </section>
 <section id="why" class="slide level2">
@@ -471,7 +424,7 @@ Floyd Everest
 <li>Make sure reported outcome is true
 <ul>
 <li>Software bugs (e.g., scanners)</li>
-<li>Human error (e.g., malicious interference, tired eyes)</li>
+<li>Human error (e.g., interference, tired eyes)</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -479,9 +432,9 @@ Floyd Everest
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-async function fadeInKeating(){
+async function fadeInClive(){
   await sleep(5000);
-  document.getElementsByClassName('fig-keating').forEach(
+  document.getElementsByClassName('fig-clive').forEach(
     (el) => {el.classList.toggle("fade-in");}
   );
 }
@@ -499,7 +452,7 @@ async function fadeInKeating(){
     <div class="window-body" style="font-size: 20pt;">
       <p>Accept at face value?</p>
       <div class="field-row">
-        <button onclick="Reveal.next();fadeInKeating();">Yes</button>
+        <button onclick="Reveal.next();fadeInClive();">Yes</button>
         <button onclick="for(let i=0; i<2; i++){Reveal.next();};">No</button>
       </div>
     </div>
@@ -525,7 +478,7 @@ async function fadeInKeating(){
         <div class="error-icon"><img src="https://win98icons.alexmeub.com/icons/png/msg_warning-0.png">
         </div>
         <div class="error-message">
-          Oops! You re-elected Paul Keating!
+          Oops! You seated Clive Palmer!
         </div>
       </div>
       <div class="field-row">
@@ -535,10 +488,10 @@ async function fadeInKeating(){
   </div>
 </div>
 </div>
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-keating quarto-figure quarto-figure-center" width="400">
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-clive quarto-figure quarto-figure-center" width="400">
 <figure class="quarto-float quarto-float-fig">
 <div>
-<img data-src="media/paul_keating_happy.jpg" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-keating" width="400">
+<img data-src="media/clive_palmer_dinosaur.avif" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="fig-clive" width="400">
 </div>
 </figure>
 </div>
@@ -587,7 +540,7 @@ H_1: \text{"Reported outcome is true."}
 </section>
 <section id="risk-limiting-audits-rlas" class="slide level2">
 <h2>Risk-limiting audits (RLAs)</h2>
-<p>Guaranteed to correct an incorrect outcome with α probability of at least 1-<span class="math inline">\(\alpha\)</span></p>
+<p>Guaranteed to correct an incorrect outcome with a probability of at least 1-<span class="math inline">\(\alpha\)</span></p>
 <ul>
 <li>Legal definition!!
 <ul>
@@ -603,7 +556,7 @@ H_1: \text{"Reported outcome is true."}
 <section id="ballot-polling-audits" class="slide level2">
 <h2>Ballot-polling audits</h2>
 <p>A simple framework for statistical audits.</p>
-<div id="fig-windows-file-copy" class="quarto-figure quarto-figure-center" loop="true" autoplay="true" height="250">
+<div id="fig-windows-file-copy" class="quarto-figure quarto-figure-center" height="250" autoplay="true" loop="true">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-windows-file-copy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <video data-src="media/file_copy.mp4" loop="true" autoplay="true" height="250" controls=""><a href="media/file_copy.mp4">Video</a></video>
@@ -613,11 +566,12 @@ Figure&nbsp;1: Sampling without replacement (Source - Windows 95)
 </figcaption>
 </figure>
 </div>
+<p>Stops when we run out of ballots, or early if we reach a decision.</p>
 </section>
 <section id="ballot-polling-audits-1" class="slide level2">
 <h2>Ballot-polling audits</h2>
 <p>A simple framework for statistical audits.</p>
-<div id="fig-windows-file-copy-with-replacement" class="quarto-figure quarto-figure-center" loop="true" autoplay="true" height="250">
+<div id="fig-windows-file-copy-with-replacement" class="quarto-figure quarto-figure-center" height="250" autoplay="true" loop="true">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-windows-file-copy-with-replacement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <video data-src="media/file_copy_with_replacement.mp4" loop="true" autoplay="true" height="250" controls=""><a href="media/file_copy_with_replacement.mp4">Video</a></video>
@@ -627,48 +581,178 @@ Figure&nbsp;2: Sampling with replacement (Source - Windows 95)
 </figcaption>
 </figure>
 </div>
-</section></section>
-<section>
-<section id="plurality-elections" class="title-slide slide level1 center">
-<h1>Plurality Elections</h1>
-
+<p>Only stops when we make a decision!</p>
 </section>
-<section id="the-simplest-electoral-system" class="slide level2">
-<h2>The Simplest Electoral System</h2>
+<section id="plurality-the-simplest-electoral-system" class="slide level2">
+<h2>Plurality: The Simplest Electoral System</h2>
 <ul>
 <li>Candidates <span class="math inline">\(1,\dots,K\)</span></li>
 <li>Voters choose one candidate to vote for</li>
 <li>Whoever gets the most votes wins</li>
 </ul>
 </section>
-<section id="ternary-plots" class="slide level2">
-<h2>Ternary plots</h2>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="202" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 201;"><span id="cb1-202"><a href="#cb1-202"></a>viewof bill_length_min <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb1-203"><a href="#cb1-203"></a>  [<span class="dv">32</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> </span>
-<span id="cb1-204"><a href="#cb1-204"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Bill length (min):"</span>}</span>
-<span id="cb1-205"><a href="#cb1-205"></a>)</span>
-<span id="cb1-206"><a href="#cb1-206"></a>viewof islands <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>(</span>
-<span id="cb1-207"><a href="#cb1-207"></a>  [<span class="st">"Torgersen"</span><span class="op">,</span> <span class="st">"Biscoe"</span><span class="op">,</span> <span class="st">"Dream"</span>]<span class="op">,</span> </span>
-<span id="cb1-208"><a href="#cb1-208"></a>  { <span class="dt">value</span><span class="op">:</span> [<span class="st">"Torgersen"</span><span class="op">,</span> <span class="st">"Biscoe"</span>]<span class="op">,</span> </span>
-<span id="cb1-209"><a href="#cb1-209"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Islands:"</span></span>
-<span id="cb1-210"><a href="#cb1-210"></a>  }</span>
-<span id="cb1-211"><a href="#cb1-211"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
+<section id="the-hypothesis-test" class="slide level2">
+<h2>The Hypothesis Test</h2>
+<ul>
+<li>Two candidates: A and B</li>
+<li>Reported winner is A</li>
+<li>Proportions <span class="math inline">\(\mathbf{p}=(p_A,p_B)'\)</span></li>
+</ul>
+<p><span class="math display">\[
+H_0:\ \mathbf{p}\in\Theta_0 = \{\mathbf{p}:p_B\geq p_A\}
+\]</span></p>
+<p><span class="math display">\[
+H_1:\ \mathbf{p}\in\Theta_1 = \{\mathbf{p}:p_A&gt;p_B\}
+\]</span></p>
+</section>
+<section id="ballot-polling-stochastic-process" class="slide level2">
+<h2>Ballot-polling Stochastic Process</h2>
+<p>Sample counts over time:</p>
 
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-1-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-2" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="ballot-polling-stochastic-process-1" class="slide level2">
+<h2>Ballot-polling Stochastic Process</h2>
+<p>Illustrating sample proportions over time:</p>
 
-</div>
-</div>
-</div>
-</div>
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-2-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-3" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sample-proportions" class="slide level2">
+<h2>Sample proportions</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-3-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-4" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sample-proportions-1" class="slide level2">
+<h2>Sample proportions</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-4-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-5" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sample-proportions-2" class="slide level2">
+<h2>Sample proportions</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-5-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-6" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sample-proportions-3" class="slide level2">
+<h2>Sample proportions</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-6-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-7" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sample-proportions-4" class="slide level2">
+<h2>Sample proportions</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-7-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-8" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="the-hypothesis-test-1" class="slide level2">
+<h2>The Hypothesis Test</h2>
+<ul>
+<li>Audit-trail proportions define true outcomes</li>
+<li>Sample proportions converge to this value</li>
+</ul>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-8-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-9" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sequential-decision-rules-d" class="slide level2">
+<h2>Sequential Decision Rules <span class="math inline">\(d\)</span></h2>
+<p>Given:</p>
+<ul>
+<li>The “time” <span class="math inline">\(n\)</span></li>
+<li>A finite sequence of ballots <span class="math inline">\(\mathbf{b}^n=(b_1,\dots,b_n)\)</span></li>
+</ul>
+<p>We choose <span class="math inline">\(d(\mathbf{b}^n)\)</span>, one of:</p>
+<ul>
+<li>Continue sampling</li>
+<li>Certify reported outcome</li>
+<li>Stop without certifying</li>
+</ul>
+</section>
+<section id="sample-coherence" class="slide level2">
+<h2>Sample coherence</h2>
+<p><span class="math inline">\(d\)</span> is sample-coherent if we certify only when sample-proportions support reported outcome.</p>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-9-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-10" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="worst-case-risk" class="slide level2">
+<h2>Worst-case risk</h2>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-10-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-11" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="bayesian-audits" class="slide level2">
+<h2>Bayesian audits</h2>
+<ul>
+<li>Define a prior on <span class="math inline">\(\Theta\)</span> (Dirichlet)</li>
+<li>Yield posterior using current sample <span class="math inline">\(\mathbf{b}^n\)</span></li>
+<li>Calculate posterior probability of <span class="math inline">\(\Theta_1\)</span></li>
+<li>Certify if this exceeds some pre-defined threshold <span class="math inline">\(\kappa&gt;0.5\)</span></li>
+</ul>
+</section>
+<section id="worst-case-for-bayesian-audits" class="slide level2">
+<h2>Worst-case for Bayesian audits</h2>
+<p>Bayesian audits with “symmetric” Dirichlet prior are sample-coherent.</p>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-11-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-12" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="worst-case-for-bayesian-audits-1" class="slide level2">
+<h2>Worst-case for Bayesian audits</h2>
+<p>Empirical analysis showed that the worst case risk is the two-way tie</p>
+
+<img data-src="conf_pres_files/figure-revealjs/unnamed-chunk-12-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-13" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="estimating-worst-case-risk" class="slide level2">
+<h2>Estimating Worst-case Risk</h2>
+<ul>
+<li>Fix threshold and Dirichlet prior</li>
+<li>Calculate risk via Monte Carlo integration:
+<ul>
+<li>Simulate audits with <span class="math inline">\(\mathbf{p}=(1/2, 1/2, 0, \dots)'\)</span></li>
+<li>Count number of certifications</li>
+</ul></li>
+</ul>
+</section>
+<section id="tuning-audit-parameters" class="slide level2">
+<h2>Tuning Audit Parameters</h2>
+<ul>
+<li>Fix Dirichlet prior</li>
+<li>Search for some <span class="math inline">\(\kappa\in [1/2, 1)\)</span> such that risk<span class="math inline">\(\leq\alpha\)</span>
+<ul>
+<li>Binary search</li>
+<li>“Sharp Noisy Binary Search” <span class="citation" data-cites="gretta2023sharpnoisybinarysearch">Gretta and Price (<a href="#/section" role="doc-biblioref" onclick="">2023</a>)</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="plans-for-the-future" class="title-slide slide level1 center">
+<h1>Plans for the future</h1>
+
+</section>
+<section id="develop-tools-for-sequential-testing" class="slide level2">
+<h2>Develop tools for sequential testing</h2>
+<ul>
+<li>Common in industry
+<ul>
+<li>Sequential A/B testing</li>
+<li>SPRT</li>
+</ul></li>
+<li>Few open-source projects</li>
+<li>Different packages have different structures</li>
+<li>Active area of research</li>
+</ul>
+</section>
+<section id="test_smart" class="slide level2">
+<h2><code>test_smart</code></h2>
+<ul>
+<li><code>test_smart</code> as a unified sequential testing library on which to base other tests</li>
+</ul>
+</section>
+<section id="optimising-supermartingale-intersection-tests" class="slide level2">
+<h2>Optimising Supermartingale Intersection Tests</h2>
+<ul>
+<li>Sequential decision rules often use test supermartingales
+<ul>
+<li>A non-negative stochastic process</li>
+<li>Under <span class="math inline">\(H_0\)</span>, will not exceed <span class="math inline">\(1/\alpha\)</span> with probability <span class="math inline">\(1-\alpha\)</span></li>
+<li>Ville’s inequality</li>
+</ul></li>
+</ul>
+</section>
+<section id="optimising-supermartingale-intersection-tests-1" class="slide level2">
+<h2>Optimising Supermartingale Intersection Tests</h2>
+<ul>
+<li>Convex combinations are still supermartingales
+<ul>
+<li>Intersection supermartingale</li>
+</ul></li>
+<li>Weights are allowed to change at each step</li>
+<li><span class="citation" data-cites="ek2023awaire">Ek et al. (<a href="#/section" role="doc-biblioref" onclick="">2023</a>)</span> use different weighted averages of test supermartingales</li>
+<li>Portfolio algorithms could optimise performance</li>
+</ul>
 </section>
 <section id="the-end" class="slide level2">
 <h2>The End</h2>
@@ -715,10 +799,18 @@ Figure&nbsp;2: Sampling with replacement (Source - Windows 95)
   </div>
 </div>
 </section>
-<section id="section" class="slide level2" data-transition="fade-in" data-background-image="media/shut_down_safe.png">
+<section id="section" class="slide level2 smaller scrollable" data-transition="fade-in" data-background-image="media/shut_down_safe.png">
 <h2></h2>
 <div class="footer footer-default">
 
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ek2023awaire" class="csl-entry" role="listitem">
+Ek, Alexander, Philip Stark, Peter Stuckey, and Damjan Vukcevic. 2023. <span>“Adaptively Weighted Audits of Instant-Runoff Voting Elections: Awaire.”</span> In <em>International Joint Conference on Electronic Voting</em>, 35–51. Springer Nature Switzerland Cham.
+</div>
+<div id="ref-gretta2023sharpnoisybinarysearch" class="csl-entry" role="listitem">
+Gretta, Lucas, and Eric Price. 2023. <span>“Sharp Noisy Binary Search with Monotonic Probabilities.”</span> <a href="https://arxiv.org/abs/2311.00840">https://arxiv.org/abs/2311.00840</a>.
+</div>
 </div>
 </section></section>
     </div>
@@ -931,17 +1023,44 @@ Figure&nbsp;2: Sampling with replacement (Source - Windows 95)
         ]
       });
     </script>
-    <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof bill_length_min = Inputs.range(\n  [32, 50], \n  {value: 35, step: 1, label: \"Bill length (min):\"}\n)\nviewof islands = Inputs.checkbox(\n  [\"Torgersen\", \"Biscoe\", \"Dream\"], \n  { value: [\"Torgersen\", \"Biscoe\"], \n    label: \"Islands:\"\n  }\n)\n"},{"methodName":"interpretQuiet","source":"shinyInput('bill_length_min')"},{"methodName":"interpretQuiet","source":"shinyInput('islands')"}]}
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script>
-    <script type="module">
-    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-    window._ojs.paths.runtimeToDoc = "../../..";
-    window._ojs.paths.runtimeToRoot = "../../..";
-    window._ojs.paths.docToRoot = "";
-    window._ojs.selfContained = false;
-    window._ojs.runtime.interpretFromScriptTags();
-    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
