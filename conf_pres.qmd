@@ -18,10 +18,6 @@ format:
 
 * Nostalgia
 
-. . .
-
-* References you're too young for
-
 
 # Risk-limiting Bayesian Ballot-polling Audits for Plurality
 
@@ -37,13 +33,13 @@ format:
 
 # Post-election Audits
 
-## What?
+## What is a Post-election Audit?
 
 * After "the count", a *reported outcome* is released
 * With access to the *audit-trail*
 * *Certify* as correct, or correct the outcome
 
-## Why?
+## Why do a Post-election Audit?
 
 * Make sure reported outcome is true
   * Software bugs (e.g., scanners)
@@ -118,7 +114,7 @@ async function fadeInClive(){
 ![](media/clive_palmer_dinosaur.avif){.fig-clive width=400}
 
 
-## How?
+## The Canonical Audit
 
 If the audit-trail is reliable, we can just recount using these records.
 But:
@@ -146,8 +142,10 @@ $$
 H_1: \text{"Reported outcome is true."}
 $$
 
-* Take a relatively small sample
+* Take a relatively small sample of ballots
 * *Decide* between $H_0$ and $H_1$
+* ($H_0$ and $H_1$ are not switched)
+
 
 ## Sequential hypothesis testing
 
@@ -204,11 +202,11 @@ Only stops when we make a decision!
 * Proportions $\mathbf{p}=(p_A,p_B)'$
 
 $$
-H_0:\ \mathbf{p}\in\Theta_0 = \{\mathbf{p}:p_B\geq p_A\}
+H_0:\ p_A\leq p_B
 $$
 
 $$
-H_1:\ \mathbf{p}\in\Theta_1 = \{\mathbf{p}:p_A>p_B\}
+H_1:\ p_A>p_B
 $$
 
 ## Ballot-polling Stochastic Process
@@ -350,34 +348,21 @@ for (i in seq_along(head(points, -1))) {
 TernaryPlot(atip=expression(p[A]), btip=expression(p[B]), ctip=expression(p[C]), axis.labels = FALSE, axis.tick = FALSE)
 TernaryPolygon(list(c(1,0,0), c(1/2, 1/2, 0), c(1/3,1/3,1/3), c(1/2, 0, 1/2)), col = "#EEEEEE")
 TernaryPolygon(list(c(1/2,1/2,0), c(1/3, 1/3, 1/3), c(1/2,0,1/2), c(0, 0, 1), c(0, 1, 0)), col = "#AAAAAA")
-text(0, 0.5, expression(Theta[1]), cex=2)
-text(0, 0.15, expression(Theta[0]), cex=2)
+text(0, 0.5, expression(H[1]), cex=2)
+text(0, 0.15, expression(H[0]), cex=2)
 ```
 
 
-## Sequential Decision Rules $d$
-
-Given:
-
-* The "time" $n$
-* A finite sequence of ballots $\mathbf{b}^n=(b_1,\dots,b_n)$
-
-We choose $d(\mathbf{b}^n)$, one of:
-
-* Continue sampling
-* Certify reported outcome
-* Stop without certifying
-
 ## Sample coherence
 
-$d$ is sample-coherent if we certify only when sample-proportions support reported outcome.
+An audit is sample-coherent if we certify only when sample-proportions support reported outcome.
 
 ```{r}
 TernaryPlot(atip=expression(p[A]), btip=expression(p[B]), ctip=expression(p[C]), axis.labels = FALSE, axis.tick = FALSE)
 TernaryPolygon(list(c(1,0,0), c(1/2, 1/2, 0), c(1/3,1/3,1/3), c(1/2, 0, 1/2)), col = "#EEEEEE")
 TernaryPolygon(list(c(1/2,1/2,0), c(1/3, 1/3, 1/3), c(1/2,0,1/2), c(0, 0, 1), c(0, 1, 0)), col = "#AAAAAA")
-text(0, 0.5, expression(Theta[1]), cex=2)
-text(0, 0.15, expression(Theta[0]), cex=2)
+text(0, 0.5, expression(H[1]), cex=2)
+text(0, 0.15, expression(H[0]), cex=2)
 ```
 
 ## Worst-case risk
@@ -387,29 +372,29 @@ TernaryPlot(atip=expression(p[A]), btip=expression(p[B]), ctip=expression(p[C]),
 TernaryPolygon(list(c(1,0,0), c(1/2, 1/2, 0), c(1/3,1/3,1/3), c(1/2, 0, 1/2)), col = "#EEEEEE")
 TernaryPolygon(list(c(1/2,1/2,0), c(1/3, 1/3, 1/3), c(1/2,0,1/2), c(0, 0, 1), c(0, 1, 0)), col = "#AAAAAA", )
 TernaryLines(list(c(1/2,1/2,0), c(1/3,1/3,1/3), c(1/2,0,1/2)), col="red", lwd=4)
-text(0, 0.5, expression(Theta[1]), cex=2)
-text(0, 0.15, expression(Theta[0]), cex=2)
+text(0, 0.5, expression(H[1]), cex=2)
+text(0, 0.15, expression(H[0]), cex=2)
 ```
 
 
 ## Bayesian audits
 
-* Define a prior on $\Theta$ (Dirichlet)
+* Define a prior on $H_0\cup H_1$ (Dirichlet)
 * Yield posterior using current sample $\mathbf{b}^n$
-* Calculate posterior probability of $\Theta_1$
+* Calculate posterior probability of $H_1$
 * Certify if this exceeds some pre-defined threshold $\kappa>0.5$
 
 ## Worst-case for Bayesian audits
 
-Bayesian audits with "symmetric" Dirichlet prior are sample-coherent.
+Bayesian audits with "symmetric" Dirichlet prior with $\kappa\geq0.5$ are sample-coherent.
 
 ```{r}
 TernaryPlot(atip=expression(p[A]), btip=expression(p[B]), ctip=expression(p[C]), axis.labels = FALSE, axis.tick = FALSE)
 TernaryPolygon(list(c(1,0,0), c(1/2, 1/2, 0), c(1/3,1/3,1/3), c(1/2, 0, 1/2)), col = "#EEEEEE")
 TernaryPolygon(list(c(1/2,1/2,0), c(1/3, 1/3, 1/3), c(1/2,0,1/2), c(0, 0, 1), c(0, 1, 0)), col = "#AAAAAA", )
 TernaryLines(list(c(1/2,1/2,0), c(1/3,1/3,1/3), c(1/2,0,1/2)), col="red", lwd=4)
-text(0, 0.5, expression(Theta[1]), cex=2)
-text(0, 0.15, expression(Theta[0]), cex=2)
+text(0, 0.5, expression(H[1]), cex=2)
+text(0, 0.15, expression(H[0]), cex=2)
 ```
 
 ## Worst-case for Bayesian audits
@@ -421,8 +406,8 @@ TernaryPlot(atip=expression(p[A]), btip=expression(p[B]), ctip=expression(p[C]),
 TernaryPolygon(list(c(1,0,0), c(1/2, 1/2, 0), c(1/3,1/3,1/3), c(1/2, 0, 1/2)), col = "#EEEEEE")
 TernaryPolygon(list(c(1/2,1/2,0), c(1/3, 1/3, 1/3), c(1/2,0,1/2), c(0, 0, 1), c(0, 1, 0)), col = "#AAAAAA", )
 TernaryPoints(list(c(1/2,1/2,0), c(1/2,0,1/2)), col="red")
-text(0, 0.5, expression(Theta[1]), cex=2)
-text(0, 0.15, expression(Theta[0]), cex=2)
+text(0, 0.5, expression(H[1]), cex=2)
+text(0, 0.15, expression(H[0]), cex=2)
 ```
 
 ## Estimating Worst-case Risk
@@ -437,7 +422,18 @@ text(0, 0.15, expression(Theta[0]), cex=2)
 * Fix Dirichlet prior
 * Search for some $\kappa\in [1/2, 1)$ such that risk$\leq\alpha$
   * Binary search
-  * "Sharp Noisy Binary Search" @gretta2023sharpnoisybinarysearch
+
+## Tuning Audit Parameters
+
+```{r, echo=FALSE}
+x <- seq(0, 1, length.out = 100)
+tibble(kappa=x, risk=(1-x)^2) |>
+  ggplot(aes(x=kappa, y=risk)) +
+  geom_line() +
+  xlab(expression(kappa)) +
+  ylab("Worst-case Risk") +
+  geom_hline(yintercept=0.05, linetype="dashed", color="red")
+```
 
 
 # Plans for the future
@@ -454,16 +450,17 @@ text(0, 0.15, expression(Theta[0]), cex=2)
 
 ## `test_smart`
 
-* `test_smart` as a unified sequential testing library on which to base other tests
+* `test_smart` as a unified sequential testing library on which to base all new sequential tests
+* [Documentation website started](https://fleverest.github.io/testsmart/)
 
 
 ## Optimising Supermartingale Intersection Tests
 
-* Sequential decision rules often use test supermartingales
-  * A non-negative stochastic process
-  * Under $H_0$, will not exceed $1/\alpha$ with probability $1-\alpha$
-  * Ville's inequality
+::: {#fig-supermartingale}
+![](./media/supermartingales.png)
 
+@ek2023awaire
+:::
 
 ## Optimising Supermartingale Intersection Tests
 
@@ -522,3 +519,21 @@ text(0, 0.15, expression(Theta[0]), cex=2)
 ```
 
 ## {transition="fade-in" background-image="media/shut_down_safe.png"}
+
+# Appendix
+
+## Sequential Decision Rules $d$
+
+Given:
+
+* The "time" $n$
+* A finite sequence of ballots $\mathbf{b}^n=(b_1,\dots,b_n)$
+
+We choose $d(\mathbf{b}^n)$, one of:
+
+* Continue sampling
+* Certify reported outcome
+* Stop without certifying
+
+
+## References
